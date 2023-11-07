@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-       
+        OptimizeCamera();
         PlayerMove();
     }
 
@@ -33,7 +33,6 @@ public class PlayerController : MonoBehaviour
     {
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
-        OptimizeCamera();
         Vector3 directionVector = (_cameraForward * vertical + _cameraRight * horizontal).normalized;
         _animator.SetFloat("movementSpeed", directionVector.magnitude);
         _rigidbody.velocity = directionVector * _speed;
