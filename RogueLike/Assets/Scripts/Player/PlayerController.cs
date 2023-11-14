@@ -6,27 +6,36 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _health;
     [SerializeField] private float _damage;
     [SerializeField] private float _speedAttack;
+    [SerializeField] private float _speedRun;
     [SerializeField] private Transform _camera;
 
     private Rigidbody _rigidbody;
     private Animator _animator;
+    private float _previousSpeed;
+    private bool _running;
 
     private Vector3 _cameraForward;
     private Vector3 _cameraRight;
+
+    private IPlayerAction _currentAction;
+    public IPlayerAction CurrentAction
+    {
+        get { return _currentAction; }
+        set { _currentAction = value; }
+    }
 
     private void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
         _animator = GetComponent<Animator>();
-      
- 
-        
+        _previousSpeed = _speed;
     }
 
     private void Update()
     {
         OptimizeCamera();
         PlayerMove();
+        MakeAction();
     }
 
     private void PlayerMove()
@@ -34,9 +43,10 @@ public class PlayerController : MonoBehaviour
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
         Vector3 directionVector = (_cameraForward * vertical + _cameraRight * horizontal).normalized;
-        _animator.SetFloat("movementSpeed", directionVector.magnitude);
+        _animator.SetFloat("movementSpeed", directionVector.magnitude * (_speed / 10));
         _rigidbody.velocity = directionVector * _speed;
     }
+
     private void OptimizeCamera()
     {
         _cameraForward = _camera.forward;
@@ -45,5 +55,40 @@ public class PlayerController : MonoBehaviour
         _cameraRight = _camera.right;
         _cameraRight.y = 0;
         _cameraRight.Normalize();
+    }
+
+    private void MakeAction()
+    {
+
+        if (Input.GetKey(KeyCode.LeftShift) && _currentAction == null)
+        {
+            _currentAction = GetComponent<RunAction>();
+            _currentAction.ExecuteAction(this);
+        }
+        if (Input.GetKey(KeyCode.Space) && _currentAction == null)
+        {
+            _currentAction = GetComponent<StrafeAction>();
+            _currentAction.ExecuteAction(this);
+        }
+        if (Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.LeftShift) || Input.GetMouseButtonUp(0) || !Input.GetKey(KeyCode.LeftShift))
+        {
+            if (_currentAction != null)
+            {
+                _currentAction = null;
+                _speed = _previousSpeed;
+            }
+        }
+    }
+
+    public void SetRunning(float speed)
+    {
+        if (speed >= 0)
+        {
+            _speed = speed;
+        }
+        else
+        {
+            Debug.LogError("Speed lower than 0");
+        }
     }
 }
