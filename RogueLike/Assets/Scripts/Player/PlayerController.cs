@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        _camera = GameObject.FindGameObjectWithTag("Camera").transform;
         _rigidbody = GetComponent<Rigidbody>();
         _animator = GetComponent<Animator>();
         _previousSpeed = _speed;
@@ -33,7 +34,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-       OptimizeCamera();
+        OptimizeCamera();
         PlayerMove();
         MakeAction();
     }
@@ -90,5 +91,10 @@ public class PlayerController : MonoBehaviour
         {
             Debug.LogError("Speed lower than 0");
         }
+    }
+
+    public void GetDamege(float damage)
+    {
+        _health -= damage;
     }
 }
