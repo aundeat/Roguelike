@@ -3,9 +3,6 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float _speed;
-    [SerializeField] private float _health;
-    [SerializeField] private float _damage;
-    [SerializeField] private float _speedAttack;
     [SerializeField] private float _speedRun;
     [SerializeField] private Transform _camera;
 
@@ -91,10 +88,5 @@ public class PlayerController : MonoBehaviour
         {
             Debug.LogError("Speed lower than 0");
         }
-    }
-
-    public void GetDamege(float damage)
-    {
-        _health -= damage;
     }
 }

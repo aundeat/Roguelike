@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class AttackBehaviour : StateMachineBehaviour
 {
     private Transform _player;
+    [SerializeField] private float _stopAttackDistance;
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         _player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -15,9 +16,9 @@ public class AttackBehaviour : StateMachineBehaviour
     {
         animator.transform.LookAt(_player);
         float distance = Vector3.Distance(animator.transform.position, _player.position);
-        if(distance > 3)
+        if(distance > _stopAttackDistance)
         {
-            animator.SetBool("isAttacking", true);
+            animator.SetBool("isAttacking", false);
         }
     }
 
