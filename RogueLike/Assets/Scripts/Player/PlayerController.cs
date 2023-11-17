@@ -1,5 +1,6 @@
 using System.Runtime.CompilerServices;
 using System.Threading;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -36,6 +37,11 @@ public class PlayerController : MonoBehaviour
         OptimizeCamera();
         PlayerMove();
         MakeAction();
+       
+    }
+    private void OnMouseDown()
+    {
+        _animator.SetBool("combat", true);
     }
 
     private void PlayerMove()
