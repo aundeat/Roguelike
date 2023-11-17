@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
        
     }
     private void OnMouseDown()
-    {
+    {// work for Oleg = combat it for swich controller to combat 
         _animator.SetBool("combat", true);
     }
 
@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour
         _animator.SetFloat("movementSpeed", directionVector.magnitude * (_speed / 10));
         _rigidbody.velocity = directionVector * _speed;
         _rigidbody.rotation = Quaternion.LookRotation((_cameraForward * vertical + _cameraRight * horizontal).normalized);
-        
+        // hier
     }
 
     private void OptimizeCamera()
