@@ -3,7 +3,27 @@ guid: 49b476b72165ca34e9773c7de06c01cc
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: body
+    second: {fileID: 2100000, guid: c052ff66801c1574895c4e2e2e2dd42a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: clouse
+    second: {fileID: 2100000, guid: f8dc88b3bb2e22f429a50a43dde9cc39, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: hair
+    second: {fileID: 2100000, guid: 7af558872a70d1a4b817b01e26b8959f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: maska
+    second: {fileID: 2100000, guid: 2929920d0fbbb4d4a9976ea75bfbb4d5, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

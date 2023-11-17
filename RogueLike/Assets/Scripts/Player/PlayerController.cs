@@ -1,3 +1,5 @@
+using System.Runtime.CompilerServices;
+using System.Threading;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -43,6 +45,8 @@ public class PlayerController : MonoBehaviour
         Vector3 directionVector = (_cameraForward * vertical + _cameraRight * horizontal).normalized;
         _animator.SetFloat("movementSpeed", directionVector.magnitude * (_speed / 10));
         _rigidbody.velocity = directionVector * _speed;
+        _rigidbody.rotation = Quaternion.LookRotation((_cameraForward * vertical + _cameraRight * horizontal).normalized);
+        
     }
 
     private void OptimizeCamera()
