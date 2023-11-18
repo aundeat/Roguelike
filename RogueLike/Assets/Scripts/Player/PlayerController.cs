@@ -38,8 +38,11 @@ public class PlayerController : MonoBehaviour
     }
     private void OnMouseDown()
     {// work for Oleg = combat it for swich controller to combat 
-        _animator.SetBool("combat", true);
+        
+
+        _animator.SetBool("atack", true ) ;
     }
+    private void AtackEnd() { _animator.SetBool("atack", false); }
 
     private void PlayerMove()
     {
