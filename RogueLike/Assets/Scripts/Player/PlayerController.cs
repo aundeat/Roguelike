@@ -1,12 +1,10 @@
-using System.Runtime.CompilerServices;
-using System.Threading;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float _speed;
     [SerializeField] private float _speedRun;
+    [SerializeField] private float _rotationSped;
     [SerializeField] private Transform _camera;
 
     private Rigidbody _rigidbody;
@@ -37,7 +35,7 @@ public class PlayerController : MonoBehaviour
         OptimizeCamera();
         PlayerMove();
         MakeAction();
-       
+
     }
     private void OnMouseDown()
     {// work for Oleg = combat it for swich controller to combat 
@@ -51,8 +49,13 @@ public class PlayerController : MonoBehaviour
         Vector3 directionVector = (_cameraForward * vertical + _cameraRight * horizontal).normalized;
         _animator.SetFloat("movementSpeed", directionVector.magnitude * (_speed / 10));
         _rigidbody.velocity = directionVector * _speed;
-        _rigidbody.rotation = Quaternion.LookRotation((_cameraForward * vertical + _cameraRight * horizontal).normalized);
-        // hier
+        if (directionVector != Vector3.zero)
+        {
+            float rotationSpeed = Time.deltaTime * _rotationSped;
+            Quaternion targetRotation = Quaternion.LookRotation((_cameraForward * vertical + _cameraRight * horizontal).normalized);
+            _rigidbody.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed);
+
+        }
     }
 
     private void OptimizeCamera()
