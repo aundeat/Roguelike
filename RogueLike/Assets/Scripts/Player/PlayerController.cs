@@ -3,7 +3,6 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float _speed;
-    [SerializeField] private float _speedRun;
     [SerializeField] private float _rotationSped;
     [SerializeField] private Transform _camera;
 
