@@ -9,4 +9,11 @@ public class AttackPlayer : MonoBehaviour
     {
         PlayerManager.GetDamege(_damage);
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            PlayerManager.GetDamege(_damage);
+        }
+    }
 }

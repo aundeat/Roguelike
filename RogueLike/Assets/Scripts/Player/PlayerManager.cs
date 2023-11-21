@@ -1,5 +1,7 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -26,6 +28,7 @@ public class PlayerManager : MonoBehaviour
 
     public static void GetDamege(float damage)
     {
+        Debug.Log("getDamage");
         _health -= damage;
         if (_health < 0)
         {
