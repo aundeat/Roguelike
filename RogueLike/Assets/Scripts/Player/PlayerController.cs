@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -34,15 +35,8 @@ public class PlayerController : MonoBehaviour
         OptimizeCamera();
         PlayerMove();
         MakeAction();
-
+        getCurrentMode();
     }
-    private void OnMouseDown()
-    {// work for Oleg = combat it for swich controller to combat 
-        
-
-        _animator.SetBool("atack", true ) ;
-    }
-    private void AtackEnd() { _animator.SetBool("atack", false); }
 
     private void PlayerMove()
     {
@@ -83,6 +77,14 @@ public class PlayerController : MonoBehaviour
             _currentAction = GetComponent<StrafeAction>();
             _currentAction.ExecuteAction(this);
         }
+        if (Input.GetButtonDown("Fire1") && _currentAction == null)
+        {
+            _animator.SetBool("attack", true);
+        }
+        if (Input.GetButtonUp("Fire1") && _currentAction == null)
+        {
+            _animator.SetBool("attack", false);
+        }
         if (Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.LeftShift) || Input.GetMouseButtonUp(0) || !Input.GetKey(KeyCode.LeftShift))
         {
             if (_currentAction != null)
@@ -102,6 +104,14 @@ public class PlayerController : MonoBehaviour
         else
         {
             Debug.LogError("Speed lower than 0");
+        }
+    }
+    private void getCurrentMode()
+    {
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        if (currentSceneName != "Clan")
+        {
+            _animator.SetBool("combat", true);
         }
     }
 }

@@ -15,8 +15,9 @@ public class EnymyScript : MonoBehaviour
     public void TakeDamage(float damageCount)
     {
         HP -= damageCount;
-        if (HP < 0)
+        if (HP <= 0)
         {
+            Destroy(gameObject);
             _animator.SetTrigger("Death");
             GetComponent<Collider>().enabled = false;
             _healthBar.gameObject.SetActive(false);

@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class AttackAction : MonoBehaviour, IPlayerAction
 {
-    public void ExecuteAction()
-    {
-        throw new System.NotImplementedException();
-    }
-
+    private PlayerController _playerController;
     public void ExecuteAction(PlayerController playerController)
     {
-        throw new System.NotImplementedException();
+        Debug.Log("Attack");
+        _playerController = playerController;
+        Animator animator = playerController.GetComponent<Animator>();
+        animator.SetBool("attack", true);
     }
 }
