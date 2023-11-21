@@ -117,9 +117,7 @@ public class PlayerController : MonoBehaviour
         {
             _speed = speed;
             _isRunning = true;
-
             _time += Time.deltaTime;
-            Debug.Log(_time);
             if (_time >= 0.1)
             {
                 PlayerManager.LostEnergy(_energyLossRate);
