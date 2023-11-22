@@ -51,12 +51,12 @@ public class bord_animator : MonoBehaviour
     {
        // player.GetComponent<PlayerController>().PlayerMove();
 
-        player.gameObject.SetActive(false);
+     //   player.gameObject.SetActive(false);
 
     }
     private void StartMovement()
     {
-        player.gameObject.SetActive(true);
+       // player.gameObject.SetActive(true);
 
         gameObject.GetComponent<Collider>().enabled = false;
 

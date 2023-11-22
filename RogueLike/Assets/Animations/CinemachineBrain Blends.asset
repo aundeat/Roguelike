@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CinemachineBrain Blends
   m_EditorClassIdentifier: 
   m_CustomBlends:
-  - m_From: player_virtual_Camera
+  - m_From: FreeLook Camera
     m_To: bordVirtualCamera
     m_Blend:
       m_Style: 1
@@ -25,7 +25,7 @@ MonoBehaviour:
         m_PostInfinity: 0
         m_RotationOrder: 0
   - m_From: bordVirtualCamera
-    m_To: player_virtual_Camera
+    m_To: FreeLook Camera
     m_Blend:
       m_Style: 1
       m_Time: 2
