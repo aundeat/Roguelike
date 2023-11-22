@@ -1,16 +1,24 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float _speed;
+    [SerializeField] private float _energyLossPerSecond;
     [SerializeField] private float _rotationSped;
     [SerializeField] private Transform _camera;
+
+
+    [SerializeField] private float _energyLossRate = 10f;
+
+    [SerializeField] private float _energyRegenRate = 5f;
+    private float _currentEnergyRegen = 0f;
 
     private Rigidbody _rigidbody;
     private Animator _animator;
     private float _previousSpeed;
-    private bool _running;
+    private bool _isRunning;
+    [SerializeField] private float _time;
 
     private Vector3 _cameraForward;
     private Vector3 _cameraRight;
@@ -66,8 +74,7 @@ public class PlayerController : MonoBehaviour
 
     private void MakeAction()
     {
-
-        if (Input.GetKey(KeyCode.LeftShift) && _currentAction == null)
+        if (Input.GetKey(KeyCode.LeftShift))
         {
             _currentAction = GetComponent<RunAction>();
             _currentAction.ExecuteAction(this);
@@ -98,20 +105,38 @@ public class PlayerController : MonoBehaviour
             if (_currentAction != null)
             {
                 _currentAction = null;
+                _isRunning = false;
                 _speed = _previousSpeed;
+                _time = 0f;
+            }
+            _currentEnergyRegen += _energyRegenRate * Time.deltaTime;
+            if (_currentEnergyRegen >= 1)
+            {
+                PlayerManager.GainEnergy(_currentEnergyRegen);
+                _currentEnergyRegen = 0f;
             }
         }
     }
 
     public void SetRunning(float speed)
     {
-        if (speed >= 0)
+ 
+        if (speed >= 0 && PlayerManager._energy > 0)
         {
             _speed = speed;
+            _isRunning = true;
+            _time += Time.deltaTime;
+            if (_time >= 0.1)
+            {
+                PlayerManager.LostEnergy(_energyLossRate);
+                _time = 0f;
+            }
         }
         else
         {
-            Debug.LogError("Speed lower than 0");
+            _isRunning = false;
+            _speed = _previousSpeed;
+            Debug.LogError("Speed lower than 0 or not energy");
         }
     }
     private void getCurrentMode()

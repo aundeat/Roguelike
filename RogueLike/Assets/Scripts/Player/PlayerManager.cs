@@ -7,10 +7,11 @@ public class PlayerManager : MonoBehaviour
 {
     private static float _health;
     private static bool _gameOver;
-    private static float _energy;
+    public static float _energy { get; private set; }
     [SerializeField] private float _damage;
     [SerializeField] private float _speedAttack;
     [SerializeField] private TextMeshProUGUI _playerHealthText;
+    [SerializeField] private TextMeshProUGUI _playerEnergyText;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +25,7 @@ public class PlayerManager : MonoBehaviour
     {
         ShowHealthText();
         GameOver();
+        ShowEnergyText();
     }
 
     public static void GetDamege(float damage)
@@ -35,10 +37,30 @@ public class PlayerManager : MonoBehaviour
             _gameOver = true;
         }
     }
+    public static void LostEnergy(float energy)
+    {
+        _energy -= energy;
+        if (_energy < 0)
+        {
+            _energy = 0;
+        }
+    }
+    public static void GainEnergy(float energy)
+    {
+        _energy += energy;
+        if (_energy > 100) 
+        {
+            _energy = 100;
+        }
+    }
 
     private void ShowHealthText()
     {
         _playerHealthText.text = "" + _health;
+    }
+    private void ShowEnergyText()
+    {
+        _playerEnergyText.text = "" + _energy;
     }
 
     public void GameOver()
