@@ -309,19 +309,19 @@ AnimatorStateMachine:
     m_Position: {x: -570, y: 350, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 5168360036024100350}
-    m_Position: {x: -40, y: 420, z: 0}
+    m_Position: {x: 140, y: 420, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 4537871935276599853}
-    m_Position: {x: -40, y: 500, z: 0}
+    m_Position: {x: 140, y: 500, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 363741924970269226}
-    m_Position: {x: -40, y: 350, z: 0}
+    m_Position: {x: 140, y: 350, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 6145126042049744027}
-    m_Position: {x: -40, y: 580, z: 0}
+    m_Position: {x: 140, y: 580, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 2443479598603048167}
-    m_Position: {x: 200, y: 420, z: 0}
+    m_Position: {x: 380, y: 420, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -498,31 +498,31 @@ AnimatorController:
     m_DefaultFloat: 2
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: strafe
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: SpeedUP
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: combat
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: attack
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
