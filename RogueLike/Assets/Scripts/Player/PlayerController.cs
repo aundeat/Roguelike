@@ -85,6 +85,14 @@ public class PlayerController : MonoBehaviour
         {
             _animator.SetBool("attack", false);
         }
+        if (Input.GetButtonUp("Fire2") && _currentAction == null)
+        {
+            _animator.SetBool("block", true);
+        }
+        if (Input.GetButtonUp("Fire2") && _currentAction == null)
+        {
+            _animator.SetBool("block", false);
+        }
         if (Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.LeftShift) || Input.GetMouseButtonUp(0) || !Input.GetKey(KeyCode.LeftShift))
         {
             if (_currentAction != null)
