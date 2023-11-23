@@ -19,7 +19,6 @@ public class PlayerManager : MonoBehaviour
     {
         _player = GameObject.FindGameObjectWithTag("Player");
         _playerController = _player.GetComponent<PlayerController>();
-        _playerController._animator.SetBool("tr", true);
         _health = 100;
         _gameOver = false;
         _energy = 100;
