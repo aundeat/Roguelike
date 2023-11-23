@@ -14,6 +14,7 @@ public class EnymyScript : MonoBehaviour
 
     public void TakeDamage(float damageCount)
     {
+        Debug.Log("ins");
         HP -= damageCount;
         if (HP <= 0)
         {
