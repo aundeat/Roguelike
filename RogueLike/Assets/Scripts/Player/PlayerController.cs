@@ -4,21 +4,18 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float _speed;
-    [SerializeField] private float _energyLossPerSecond;
+    [SerializeField] private float _energyLoseOnAttack;
     [SerializeField] private float _rotationSped;
-    [SerializeField] private Transform _camera;
-
-
-    [SerializeField] private float _energyLossRate = 10f;
-
+    [SerializeField] private float _energyLossRate = 0.1f;
+    [SerializeField] private float _energyLossRateOnBlock = 0.1f;
     [SerializeField] private float _energyRegenRate = 5f;
     private float _currentEnergyRegen = 0f;
-
+    private float _time;
+    private Transform _camera;
     private Rigidbody _rigidbody;
     private Animator _animator;
     private float _previousSpeed;
     private bool _isRunning;
-    [SerializeField] private float _time;
 
     private Vector3 _cameraForward;
     private Vector3 _cameraRight;
@@ -43,7 +40,7 @@ public class PlayerController : MonoBehaviour
         OptimizeCamera();
         PlayerMove();
         MakeAction();
-        getCurrentMode();
+        GetCurrentMode();
     }
 
     private void PlayerMove()
@@ -86,21 +83,26 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetButtonDown("Fire1") && _currentAction == null)
         {
-            _animator.SetBool("attack", true);
+            if (PlayerManager._energy > _energyLoseOnAttack)
+            {
+                _animator.SetBool("attack", true);
+                PlayerManager.LostEnergy(_energyLoseOnAttack);
+            }
         }
         if (Input.GetButtonUp("Fire1") && _currentAction == null)
         {
             _animator.SetBool("attack", false);
         }
-        if (Input.GetButtonUp("Fire2") && _currentAction == null)
+        if (Input.GetButton("Fire2") && _currentAction == null)
         {
+            LoseEnergy(_energyLossRateOnBlock);
             _animator.SetBool("block", true);
         }
         if (Input.GetButtonUp("Fire2") && _currentAction == null)
         {
             _animator.SetBool("block", false);
         }
-        if (Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.LeftShift) || Input.GetMouseButtonUp(0) || !Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.LeftShift) || Input.GetMouseButtonUp(0) || !Input.GetKey(KeyCode.LeftShift) && !Input.GetButton("Fire2"))
         {
             if (_currentAction != null)
             {
@@ -120,17 +122,12 @@ public class PlayerController : MonoBehaviour
 
     public void SetRunning(float speed)
     {
- 
+
         if (speed >= 0 && PlayerManager._energy > 0)
         {
             _speed = speed;
             _isRunning = true;
-            _time += Time.deltaTime;
-            if (_time >= 0.1)
-            {
-                PlayerManager.LostEnergy(_energyLossRate);
-                _time = 0f;
-            }
+            LoseEnergy(_energyLossRate);
         }
         else
         {
@@ -139,12 +136,21 @@ public class PlayerController : MonoBehaviour
             Debug.LogError("Speed lower than 0 or not energy");
         }
     }
-    private void getCurrentMode()
+    private void GetCurrentMode()
     {
         string currentSceneName = SceneManager.GetActiveScene().name;
         if (currentSceneName != "Clan")
         {
             _animator.SetBool("combat", true);
+        }
+    }
+    private void LoseEnergy(float loseEnergy)
+    {
+        _time += Time.deltaTime;
+        if (_time >= 0.1)
+        {
+            PlayerManager.LostEnergy(loseEnergy);
+            _time = 0f;
         }
     }
 }
