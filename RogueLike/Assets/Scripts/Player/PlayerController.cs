@@ -13,7 +13,6 @@ public class PlayerController : MonoBehaviour
     private Transform _camera;
     private Rigidbody _rigidbody;
     private float _previousSpeed;
-
     private Vector3 _cameraForward;
     private Vector3 _cameraRight;
 
@@ -79,11 +78,10 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("Fire1") && _currentAction == null)
         {
             _currentAction = GetComponent<AttackAction>();
-            _currentAction.ExecuteAction(this);
-        }
-        if (Input.GetButtonUp("Fire1") && _currentAction == null)
-        {
-            _animator.SetBool("attack", false);
+            if (_animator.GetBool("attack") == false)
+            {
+                _currentAction.ExecuteAction(this);
+            }
         }
         if (Input.GetButton("Fire2"))
         {
@@ -132,6 +130,10 @@ public class PlayerController : MonoBehaviour
         {
             _animator.SetBool("combat", true);
         }
+    }
+    public void StopAttack()
+    {
+        _animator.SetBool("attack", false);
     }
     public void LoseEnergy(float loseEnergy)
     {
