@@ -3,19 +3,16 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
+    public Animator _animator;
     [SerializeField] private float _speed;
-    [SerializeField] private float _energyLoseOnAttack;
     [SerializeField] private float _rotationSped;
-    [SerializeField] private float _energyLossRate = 0.1f;
-    [SerializeField] private float _energyLossRateOnBlock = 0.1f;
+    [SerializeField] private float _energyLossRateOnSpeed = 0.1f;
     [SerializeField] private float _energyRegenRate = 5f;
     private float _currentEnergyRegen = 0f;
     private float _time;
     private Transform _camera;
     private Rigidbody _rigidbody;
-    private Animator _animator;
     private float _previousSpeed;
-    private bool _isRunning;
 
     private Vector3 _cameraForward;
     private Vector3 _cameraRight;
@@ -26,7 +23,6 @@ public class PlayerController : MonoBehaviour
         get { return _currentAction; }
         set { _currentAction = value; }
     }
-
     private void Start()
     {
         _camera = GameObject.FindGameObjectWithTag("Camera").transform;
@@ -71,6 +67,7 @@ public class PlayerController : MonoBehaviour
 
     private void MakeAction()
     {
+        Debug.Log(_currentAction);
         if (Input.GetKey(KeyCode.LeftShift))
         {
             _currentAction = GetComponent<RunAction>();
@@ -83,23 +80,21 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetButtonDown("Fire1") && _currentAction == null)
         {
-            if (PlayerManager._energy > _energyLoseOnAttack)
-            {
-                _animator.SetBool("attack", true);
-                PlayerManager.LostEnergy(_energyLoseOnAttack);
-            }
+            _currentAction = GetComponent<AttackAction>();
+            _currentAction.ExecuteAction(this);
         }
         if (Input.GetButtonUp("Fire1") && _currentAction == null)
         {
             _animator.SetBool("attack", false);
         }
-        if (Input.GetButton("Fire2") && _currentAction == null)
+        if (Input.GetButton("Fire2"))
         {
-            LoseEnergy(_energyLossRateOnBlock);
-            _animator.SetBool("block", true);
+            _currentAction = GetComponent<BlockAction>();
+            _currentAction.ExecuteAction(this);
         }
-        if (Input.GetButtonUp("Fire2") && _currentAction == null)
+        if (Input.GetButtonUp("Fire2"))
         {
+            Debug.Log("Inside");
             _animator.SetBool("block", false);
         }
         if (Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.LeftShift) || Input.GetMouseButtonUp(0) || !Input.GetKey(KeyCode.LeftShift) && !Input.GetButton("Fire2"))
@@ -107,7 +102,6 @@ public class PlayerController : MonoBehaviour
             if (_currentAction != null)
             {
                 _currentAction = null;
-                _isRunning = false;
                 _speed = _previousSpeed;
                 _time = 0f;
             }
@@ -126,12 +120,10 @@ public class PlayerController : MonoBehaviour
         if (speed >= 0 && PlayerManager._energy > 0)
         {
             _speed = speed;
-            _isRunning = true;
-            LoseEnergy(_energyLossRate);
+            LoseEnergy(_energyLossRateOnSpeed);
         }
         else
         {
-            _isRunning = false;
             _speed = _previousSpeed;
             Debug.LogError("Speed lower than 0 or not energy");
         }
@@ -144,7 +136,7 @@ public class PlayerController : MonoBehaviour
             _animator.SetBool("combat", true);
         }
     }
-    private void LoseEnergy(float loseEnergy)
+    public void LoseEnergy(float loseEnergy)
     {
         _time += Time.deltaTime;
         if (_time >= 0.1)
