@@ -3210,6 +3210,7 @@ MonoBehaviour:
   _speedAttack: 0
   _playerHealthText: {fileID: 164049042}
   _playerEnergyText: {fileID: 4963448}
+  _player: {fileID: 0}
 --- !u!4 &2001620310
 Transform:
   m_ObjectHideFlags: 0
@@ -3225,6 +3226,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2044320967 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1755814140330574464, guid: 1439701281ab690478abb83510b9427b, type: 3}
+  m_PrefabInstance: {fileID: 5811286088555144519}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &373316053481846249
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3395,6 +3401,20 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1375347230633056314, guid: 1439701281ab690478abb83510b9427b, type: 3}
   m_PrefabInstance: {fileID: 5811286088555144519}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &543450652158007769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2044320967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1de8fc61692a7042ade74d84d358464, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _energyLoseOnBlock: 1
+  _nergyLoseOnHitBlockAction: 20
 --- !u!1 &4525799514147252790 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1496543549233348198, guid: 4cd18abdcce056a4e8f26c8a9351a713, type: 3}
@@ -3910,7 +3930,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5285670968968142154, guid: 1439701281ab690478abb83510b9427b, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.41828617
+      value: 0.41828614
       objectReference: {fileID: 0}
     - target: {fileID: 5353157829824505339, guid: 1439701281ab690478abb83510b9427b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4140,6 +4160,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -156.92825
       objectReference: {fileID: 0}
+    - target: {fileID: 8014653746666579802, guid: 1439701281ab690478abb83510b9427b, type: 3}
+      propertyPath: _energyLoseOnAttack
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 8235902925556941096, guid: 1439701281ab690478abb83510b9427b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: -0.46372047
@@ -4216,6 +4240,9 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1755814140330574464, guid: 1439701281ab690478abb83510b9427b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 543450652158007769}
     - targetCorrespondingSourceObject: {fileID: 5538575983564922031, guid: 1439701281ab690478abb83510b9427b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 804576547}

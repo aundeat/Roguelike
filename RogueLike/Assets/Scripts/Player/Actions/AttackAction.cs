@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class AttackAction : MonoBehaviour, IPlayerAction
 {
-    private PlayerController _playerController;
+    [SerializeField] private float _energyLoseOnAttack;
     public void ExecuteAction(PlayerController playerController)
     {
-        Debug.Log("Attack");
-        _playerController = playerController;
-        Animator animator = playerController.GetComponent<Animator>();
-        animator.SetBool("attack", true);
+        if (PlayerManager._energy > _energyLoseOnAttack)
+        {
+            playerController._animator.SetBool("attack", true);
+            PlayerManager.LostEnergy(_energyLoseOnAttack);
+        }
     }
 }
