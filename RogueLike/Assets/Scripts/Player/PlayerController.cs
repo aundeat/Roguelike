@@ -51,7 +51,6 @@ public class PlayerController : MonoBehaviour
             float rotationSpeed = Time.deltaTime * _rotationSped;
             Quaternion targetRotation = Quaternion.LookRotation((_cameraForward * vertical + _cameraRight * horizontal).normalized);
             _rigidbody.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed);
-
         }
     }
 
@@ -67,7 +66,6 @@ public class PlayerController : MonoBehaviour
 
     private void MakeAction()
     {
-        Debug.Log(_currentAction);
         if (Input.GetKey(KeyCode.LeftShift))
         {
             _currentAction = GetComponent<RunAction>();
