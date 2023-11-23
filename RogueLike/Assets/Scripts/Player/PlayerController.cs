@@ -92,7 +92,6 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetButtonUp("Fire2"))
         {
-            Debug.Log("Inside");
             _animator.SetBool("block", false);
         }
         if (Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.LeftShift) || Input.GetMouseButtonUp(0) || !Input.GetKey(KeyCode.LeftShift) && !Input.GetButton("Fire2"))
