@@ -13,6 +13,8 @@ public class StrafeAction : MonoBehaviour, IPlayerAction
         AnimationClip clip = animator.GetCurrentAnimatorClipInfo(0)[0].clip;
         float animationLength = clip.length;
         playerController.StartCoroutine(WaitForAnimation(animationLength));
+
+       
     }
     private IEnumerator WaitForAnimation(float animationLength)
     {
