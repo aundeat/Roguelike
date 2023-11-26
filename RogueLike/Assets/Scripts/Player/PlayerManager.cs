@@ -1,8 +1,6 @@
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-
+using MagicPigGames;
 public class PlayerManager : MonoBehaviour
 {
     private static float _health;
@@ -10,17 +8,18 @@ public class PlayerManager : MonoBehaviour
     public static float _energy { get; private set; }
     [SerializeField] private float _damage;
     [SerializeField] private float _speedAttack;
-    [SerializeField] private TextMeshProUGUI _playerHealthText;
-    [SerializeField] private TextMeshProUGUI _playerEnergyText;
-    // Start is called before the first frame update
+    [SerializeField] private HealthProgressBar _healthProgressBar;
+    [SerializeField] private EnergyProgressBar _energyProgressBar;
+    [SerializeField] private GameObject _player;
+    private PlayerController _playerController;
     void Start()
     {
+        _player = GameObject.FindGameObjectWithTag("Player");
+        _playerController = _player.GetComponent<PlayerController>();
         _health = 100;
         _gameOver = false;
         _energy = 100;
     }
-
-    // Update is called once per frame
     void Update()
     {
         ShowHealthText();
@@ -30,11 +29,27 @@ public class PlayerManager : MonoBehaviour
 
     public static void GetDamege(float damage)
     {
-        Debug.Log("getDamage");
-        _health -= damage;
-        if (_health < 0)
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        Animator animator = player.GetComponent<Animator>();
+        BlockAction action = player.GetComponent<BlockAction>();
+
+        if (animator.GetBool("block") == true && _energy >= action.EnergyLoseOnHitBlockAction)
         {
-            _gameOver = true;
+            _energy -= action.EnergyLoseOnHitBlockAction;
+        }
+        else if (animator.GetBool("block") == true && _energy < action.EnergyLoseOnHitBlockAction)
+        {
+            _energy = 0;
+            _health -= damage;
+            animator.SetTrigger("breakBlock");
+        }
+        else
+        {
+            _health -= damage;
+            if (_health < 0)
+            {
+                _gameOver = true;
+            }
         }
     }
     public static void LostEnergy(float energy)
@@ -48,7 +63,7 @@ public class PlayerManager : MonoBehaviour
     public static void GainEnergy(float energy)
     {
         _energy += energy;
-        if (_energy > 100) 
+        if (_energy > 100)
         {
             _energy = 100;
         }
@@ -56,11 +71,11 @@ public class PlayerManager : MonoBehaviour
 
     private void ShowHealthText()
     {
-        _playerHealthText.text = "" + _health;
+        _healthProgressBar.UpdateHealth(_health / 100);
     }
     private void ShowEnergyText()
     {
-        _playerEnergyText.text = "" + _energy;
+        _energyProgressBar.UpdateEnergy(_energy / 100);
     }
 
     public void GameOver()
