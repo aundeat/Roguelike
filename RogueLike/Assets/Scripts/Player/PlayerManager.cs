@@ -1,9 +1,6 @@
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using static UnityEditor.Experimental.GraphView.GraphView;
-
+using MagicPigGames;
 public class PlayerManager : MonoBehaviour
 {
     private static float _health;
@@ -11,8 +8,8 @@ public class PlayerManager : MonoBehaviour
     public static float _energy { get; private set; }
     [SerializeField] private float _damage;
     [SerializeField] private float _speedAttack;
-    [SerializeField] private TextMeshProUGUI _playerHealthText;
-    [SerializeField] private TextMeshProUGUI _playerEnergyText;
+    [SerializeField] private HealthProgressBar _healthProgressBar;
+    [SerializeField] private EnergyProgressBar _energyProgressBar;
     [SerializeField] private GameObject _player;
     private PlayerController _playerController;
     void Start()
@@ -39,7 +36,8 @@ public class PlayerManager : MonoBehaviour
         if (animator.GetBool("block") == true && _energy >= action.EnergyLoseOnHitBlockAction)
         {
             _energy -= action.EnergyLoseOnHitBlockAction;
-        }else if (animator.GetBool("block") == true && _energy < action.EnergyLoseOnHitBlockAction)
+        }
+        else if (animator.GetBool("block") == true && _energy < action.EnergyLoseOnHitBlockAction)
         {
             _energy = 0;
             _health -= damage;
@@ -65,7 +63,7 @@ public class PlayerManager : MonoBehaviour
     public static void GainEnergy(float energy)
     {
         _energy += energy;
-        if (_energy > 100) 
+        if (_energy > 100)
         {
             _energy = 100;
         }
@@ -73,11 +71,11 @@ public class PlayerManager : MonoBehaviour
 
     private void ShowHealthText()
     {
-        _playerHealthText.text = "" + _health;
+        _healthProgressBar.UpdateHealth(_health / 100);
     }
     private void ShowEnergyText()
     {
-        _playerEnergyText.text = "" + _energy;
+        _energyProgressBar.UpdateEnergy(_energy / 100);
     }
 
     public void GameOver()
