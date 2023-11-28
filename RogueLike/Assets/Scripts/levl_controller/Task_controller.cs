@@ -8,11 +8,14 @@ public class Task : MonoBehaviour
     [SerializeField] private Text Description;
     [SerializeField] GameObject Canvas_description;
 
+    [SerializeField] private GameObject startMission;
     [SerializeField] private Text Reward;
 
     [Header("Mission")]
-    [SerializeField] parameter_mission Scriptebl_Mission;
+    [SerializeField] public parameter_mission Scriptebl_Mission;
     private Renderer rend;
+
+   
     private void Start()
     {
         rend = GetComponent<Renderer>();
@@ -36,7 +39,9 @@ public class Task : MonoBehaviour
         {
             if (Scriptebl_Mission.MissionMap != null)
             {
-                SceneManager.LoadScene(Scriptebl_Mission.MissionMap);
+               startMission.GetComponent<Mission_starter>().CurrentMission = Scriptebl_Mission;
+
+
             }
         }
     }

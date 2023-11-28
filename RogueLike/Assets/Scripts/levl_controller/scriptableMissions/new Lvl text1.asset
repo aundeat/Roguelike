@@ -16,6 +16,6 @@ MonoBehaviour:
   LvlDescription: dragon from demon country come to kill all peple in this world
   Lvl: 2
   Complexity: 2
-  ItOpen: 0
+  ItOpen: 1
   Reward: 5000 gold 10000exp
-  MissionMap: Mountains
+  MissionMap: forest_loc_1
