@@ -39,7 +39,7 @@ public class Task : MonoBehaviour
         {
             if (Scriptebl_Mission.MissionMap != null)
             {
-              
+                SaveData.current.CurrentMission = Scriptebl_Mission;
 
 
             }

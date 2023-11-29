@@ -9,14 +9,12 @@ public class Mission_starter : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-      //  SaveData.current =  (SaveData)SerializationManager.Load(Application.persistentDataPath + "/saves/Save.save");
-
-
-        /*
-        if (1 !=1 )
+     if (SaveData.current.CurrentMission != null)
         {
-            SceneManager.LoadScene("");
-        }else { Debug.Log("error mission not found"); }
-        */
+            SceneManager.LoadScene(SaveData.current.CurrentMission.MissionMap);
+
+        }
+
+     
     }
 }
