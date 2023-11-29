@@ -180,7 +180,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'save sistem
+  m_text: 'Load sistem
 
 '
   m_isRightToLeft: 0
