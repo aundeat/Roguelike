@@ -7,6 +7,11 @@ public class PauseAction : MonoBehaviour, IPlayerAction
    [SerializeField] private GameObject PauseCV;
     public void ExecuteAction(PlayerController playerController)
     {
-       PauseCV.gameObject.SetActive(true);
+
+        if (PauseCV != null) { 
+        PauseCV.gameObject.SetActive(true);
+        }
+       
+        
     }
 }

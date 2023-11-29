@@ -1,10 +1,9 @@
 fileFormatVersion: 2
-guid: 92e4f6b1a6a007c4cbaab9fa7b8e9ce4
+guid: 1b76d86a2f879f542ae0b2b305a7640a
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - PauseCV: {fileID: 949269921812610400, guid: a195158fe9a05bc409619e57a2bcdc1c, type: 3}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

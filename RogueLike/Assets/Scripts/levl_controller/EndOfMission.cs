@@ -21,7 +21,7 @@ public class EndOfMission : MonoBehaviour
             Reward.text = "you get Nothing";
     }
     
-
+    
 
     
 
