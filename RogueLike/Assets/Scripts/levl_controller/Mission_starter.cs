@@ -5,13 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class Mission_starter : MonoBehaviour
 {
-     public parameter_mission CurrentMission;
+  
 
     private void OnTriggerEnter(Collider other)
     {
-        if (CurrentMission.MissionMap != null)
+      //  SaveData.current =  (SaveData)SerializationManager.Load(Application.persistentDataPath + "/saves/Save.save");
+
+
+        /*
+        if (1 !=1 )
         {
-            SceneManager.LoadScene(CurrentMission.MissionMap);
+            SceneManager.LoadScene("");
         }else { Debug.Log("error mission not found"); }
+        */
     }
 }

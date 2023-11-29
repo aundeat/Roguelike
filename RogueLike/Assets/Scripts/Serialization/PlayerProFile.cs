@@ -4,11 +4,16 @@ using System.IO;
 using UnityEngine;
 
 [System.Serializable]
-public class PlayerProFile 
+public class PlayerProfile 
 {
+
     public int Playerlvl;
     public float PlayerDamage;
 
 
-    public PlayerProFile proFile;
+   
+    public parameter_mission CurrentMission;
+
+   
 }
+

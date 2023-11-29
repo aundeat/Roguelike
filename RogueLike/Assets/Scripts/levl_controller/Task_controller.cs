@@ -39,7 +39,7 @@ public class Task : MonoBehaviour
         {
             if (Scriptebl_Mission.MissionMap != null)
             {
-               startMission.GetComponent<Mission_starter>().CurrentMission = Scriptebl_Mission;
+              
 
 
             }

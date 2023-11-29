@@ -7,7 +7,7 @@ public class SaveData
 {       
     private static SaveData _current;
 
-    public static SaveData Current
+    public static SaveData current
     {
 
         get 
@@ -19,6 +19,19 @@ public class SaveData
 
             return _current;
         }
+        set
+        {
+            if (value != null)
+            {
+                _current = value;
+            }
+        }
     }
 
+    public PlayerProfile profile;
+
+    public int Playerlvl;
+    public float PlayerDamage;
+
 }
+    
