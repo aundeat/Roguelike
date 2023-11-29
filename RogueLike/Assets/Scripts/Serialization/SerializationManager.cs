@@ -8,7 +8,7 @@ public class SerializationManager
 {
     public static bool Save(string saveName, object SaveData)
     {
-        saveName = "Save";
+        
         BinaryFormatter formatter = GetBinaryFormatter();
 
         if (!Directory.Exists(Application.persistentDataPath + "/saves")) { }

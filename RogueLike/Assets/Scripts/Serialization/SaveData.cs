@@ -30,6 +30,8 @@ public class SaveData
 
     public PlayerProfile profile;
 
+    public parameter_mission CurrentMission;
+
     public int Playerlvl;
     public float PlayerDamage;
 

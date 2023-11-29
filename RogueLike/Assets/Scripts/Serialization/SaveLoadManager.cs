@@ -11,6 +11,8 @@ public class SaveLoadManager : MonoBehaviour
        
         
         SaveData.current = (SaveData)SerializationManager.Load(Application.persistentDataPath + "/saves/Save.save");
+        SceneManager.LoadScene("Clan");
+
     }
     public void NewGame()
     {
@@ -18,7 +20,7 @@ public class SaveLoadManager : MonoBehaviour
     }
     public void SaveGame()
     {
-       SerializationManager.Save("Save",SaveData.current  );
+       SerializationManager.Save("Save",SaveData.current);
     }
 
     public void LoadMenu()
