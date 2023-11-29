@@ -112,6 +112,11 @@ public class PlayerController : MonoBehaviour
                 _currentEnergyRegen = 0f;
             }
         }
+        if (Input.GetButtonDown("Cancel")) 
+        {
+            _currentAction = GetComponent<PauseAction>();
+            _currentAction.ExecuteAction(this);
+        }
     }
 
     public void SetRunning(float speed)

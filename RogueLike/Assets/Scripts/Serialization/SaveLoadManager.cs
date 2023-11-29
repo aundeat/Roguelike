@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Starter : MonoBehaviour
+public class SaveLoadManager : MonoBehaviour
 {
     [SerializeField] SaveData saveData;
     public void LoadGame()
@@ -16,5 +16,16 @@ public class Starter : MonoBehaviour
     {
         SceneManager.LoadScene("TraningScene");
     }
-        
+    public void SaveGame()
+    {
+       SerializationManager.Save("Save",SaveData.current  );
+    }
+
+    public void LoadMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+
+    }
+
+
 }

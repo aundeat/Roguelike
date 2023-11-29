@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/maps/forest_loc_1.unity
     guid: fc10679d6a4075f41a4ea2505709ca8f
+  - enabled: 1
+    path: Assets/Scenes/TraningScene.unity
+    guid: f1bc5a3108bbb0d408bbb05619426879
+  - enabled: 1
+    path: Assets/Scenes/MainMenu/MainMenu.unity
+    guid: b71eeb72be7f3ea4dbcff18bb10699bf
   m_configObjects: {}
