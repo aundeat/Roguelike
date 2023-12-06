@@ -8,11 +8,12 @@ public class Task : MonoBehaviour
     [SerializeField] private Text Description;
     [SerializeField] GameObject Canvas_description;
 
-    [SerializeField] private GameObject startMission;
+   
     [SerializeField] private Text Reward;
 
     [Header("Mission")]
     [SerializeField] public parameter_mission Scriptebl_Mission;
+
     private Renderer rend;
 
    
