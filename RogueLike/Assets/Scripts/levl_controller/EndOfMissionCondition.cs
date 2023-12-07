@@ -1,18 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 
 public class EndOfMissionCondition : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] GameObject CanvasEnd;
+
+    
     void Start()
     {
         
+
+
     }
 
-    // Update is called once per frame
-    void Update()
+
+    private void Update()
     {
-        
+        if (SaveData.current.CurrentMission.NeedToEnd <= SaveData.current.PlayerCurrentKills) { CanvasEnd.SetActive(true); }
     }
+
 }

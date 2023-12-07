@@ -35,5 +35,7 @@ public class SaveData
     public int Playerlvl;
     public float PlayerDamage;
     public int PlayerSpeed;
+
+    public float PlayerCurrentKills;
 }
     

@@ -22,6 +22,7 @@ public class EnymyScript : MonoBehaviour
             _animator.SetTrigger("Death");
             GetComponent<Collider>().enabled = false;
             _healthBar.gameObject.SetActive(false);
+            SaveData.current.PlayerCurrentKills++;
         }
         else
         {

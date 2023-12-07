@@ -14,7 +14,7 @@ public class parameter_mission : ScriptableObject
 
     [SerializeField] public string Reward;
 
-
+    [SerializeField] public float NeedToEnd;
 
     [SerializeField] public string MissionMap;
 
