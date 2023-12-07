@@ -33,6 +33,7 @@ public class TackSpawner : MonoBehaviour
         position.y = gameObject.transform.position.y + Random.Range(-0.3f, 0.3f);
         return position;
     }
+   
 
   
 }

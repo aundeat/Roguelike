@@ -10538,15 +10538,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5285670968968142154, guid: 1439701281ab690478abb83510b9427b, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.41828617
+      value: 0.41828614
       objectReference: {fileID: 0}
     - target: {fileID: 8360931709684289874, guid: 1439701281ab690478abb83510b9427b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000015756813
+      value: -0.000000015756815
       objectReference: {fileID: 0}
     - target: {fileID: 8360931709684289874, guid: 1439701281ab690478abb83510b9427b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000006912477
+      value: 0.0000000069124777
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -21865,6 +21865,7 @@ GameObject:
   - component: {fileID: 1317823358}
   - component: {fileID: 1317823357}
   - component: {fileID: 1317823361}
+  - component: {fileID: 1317823362}
   m_Layer: 0
   m_Name: Spheretest
   m_TagString: Untagged
@@ -21975,6 +21976,19 @@ MonoBehaviour:
   Canvas_description: {fileID: 0}
   Reward: {fileID: 0}
   Scriptebl_Mission: {fileID: 0}
+--- !u!114 &1317823362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1317823356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07842f3a52e4f0d40aa0b7465bea70b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MissionCreater: {fileID: 1780801871}
 --- !u!1 &1318580384
 GameObject:
   m_ObjectHideFlags: 0
@@ -29671,7 +29685,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1780801869}
   - component: {fileID: 1780801868}
-  - component: {fileID: 1780801870}
+  - component: {fileID: 1780801871}
   m_Layer: 0
   m_Name: BordMissionSpawner
   m_TagString: Untagged
@@ -29708,7 +29722,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1780801870
+--- !u!114 &1780801871
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -29717,16 +29731,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1780801867}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62ec93de90934a04ebe9550094a2fbbf, type: 3}
+  m_Script: {fileID: 11500000, guid: 79319c032b49cb349b35b3cd26a38db4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ScriptblMission:
   - {fileID: 11400000, guid: 5c4cf89e6a65f434ba3958c008545dcd, type: 2}
   - {fileID: 11400000, guid: 791bec285cdfd564bb44441e16d878f5, type: 2}
   - {fileID: 11400000, guid: 5c4cf89e6a65f434ba3958c008545dcd, type: 2}
-  - {fileID: 11400000, guid: 791bec285cdfd564bb44441e16d878f5, type: 2}
-  - {fileID: 11400000, guid: 5c4cf89e6a65f434ba3958c008545dcd, type: 2}
-  - {fileID: 11400000, guid: 791bec285cdfd564bb44441e16d878f5, type: 2}
 --- !u!1 &1787474977
 GameObject:
   m_ObjectHideFlags: 0
