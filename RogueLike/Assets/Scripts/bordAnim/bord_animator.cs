@@ -15,7 +15,7 @@ public class bord_animator : MonoBehaviour
     {
         player = other.gameObject;
 
-        CharacterCamera = other.GetComponentInChildren<CinemachineVirtualCamera>();
+        CharacterCamera = player.GetComponentInChildren<CinemachineVirtualCamera>();
 
         ChangeCamera();
 
