@@ -150,4 +150,9 @@ public class PlayerController : MonoBehaviour
             _time = 0f;
         }
     }
+    private void Awake()
+    {
+    
+      
+    }
 }

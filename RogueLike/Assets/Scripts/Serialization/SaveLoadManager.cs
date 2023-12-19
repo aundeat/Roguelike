@@ -5,13 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class SaveLoadManager : MonoBehaviour
 {
-    [SerializeField] SaveData saveData;
+    
     public void LoadGame()
     {
-       
-        
-        SaveData.current = (SaveData)SerializationManager.Load(Application.persistentDataPath + "/saves/Save.save");
         SceneManager.LoadScene("Clan");
+
+        SaveData.current = (SaveData)SerializationManager.Load(Application.persistentDataPath + "/saves/Save.save");
+        
+
+
 
     }
     public void NewGame()

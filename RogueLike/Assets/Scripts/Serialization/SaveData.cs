@@ -28,7 +28,7 @@ public class SaveData
         }
     }
 
-    public PlayerProfile profile;
+    
 
     public parameter_mission CurrentMission;
 
@@ -37,5 +37,13 @@ public class SaveData
     public int PlayerSpeed;
 
     public float PlayerCurrentKills;
+
+    public bool ActionBase;
+
+   
+
+
+
+
 }
     
